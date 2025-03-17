@@ -20,32 +20,23 @@ use colored::*;
 
 
 fn main() {
-    /* 
-    print!("{}",format!("A{}{}{}{}",ZALGO_UP[22],ZALGO_UP[20],ZALGO_UP[19],ZALGO_UP[0]));
-    let complexity: u32 = read_complexity();
-    println!("{}",complexity);
-    println!("{}",zalgo_transform(complexity, "I am a pixel".to_string())); */
-///*
-    {
-        let string1 = String::from("long string");
-        let result;
-        {
-            let string2 = String::from("short");
-            result = longest(string1.as_str(), string2.as_str()); // ❌ ERROR
-        } // string2 is dropped here!
     
-        println!("{}", result); // result would be a dangling reference
-    }//*/
+   // print!("{}",format!("A{}{}{}{}",ZALGO_UP[22],ZALGO_UP[20],ZALGO_UP[19],ZALGO_UP[0]));
+    let complexity: u32 = read_complexity();
+    println!("{}",zalgo_transform(complexity, read_string())); 
+
 }
 ///* 
-fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
-    if s1.len() > s2.len() {
-        s1
-    } else {
-        s2
-    }
-}//*/
 
+
+fn read_string() -> String{
+    let mut input = String::new();
+    println!("Write down the words you want to convert to zalgo:");
+   //io::stdout().flush().unwrap(); // 
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+   // input.trim().to_string(); 
+    return input;
+}
 
 
 fn zalgo_transform(complexity: u32, inputstr: String) -> String{
@@ -53,12 +44,12 @@ fn zalgo_transform(complexity: u32, inputstr: String) -> String{
     let mut rng = rand::thread_rng();
     
     for cha in inputstr.chars(){
-        println!("Transformin char:{}", cha);
+       // println!("Transformin char:{}", cha);
         zalgo_string.push(cha);// ad new character
         
         for i in 0..complexity {// add top diacritics
             let random_int1 = rng.gen_range(0..ZALGO_UP.len());// later on should make a different gen to each type of mod
-            println!("top Iteration {}, generated the number {}, which is the diacritic {} ", i,random_int1, ZALGO_UP[random_int1] );
+          //  println!("top Iteration {}, generated the number {}, which is the diacritic {} ", i,random_int1, ZALGO_UP[random_int1] );
            // println!("number generated: {}", random_int1);
             zalgo_string.push(ZALGO_UP[random_int1]);
         }
@@ -76,9 +67,9 @@ fn zalgo_transform(complexity: u32, inputstr: String) -> String{
         }*/
         for i in 0..complexity {// add bottom(down) diacritics
             let random_int3 = rng.gen_range(0..ZALGO_DOWN.len());// later on should make a different gen to each type of mod
-            println!("Down Iteration {}, generated the number {}, which is the diacritic {} ", i,random_int3, ZALGO_DOWN[random_int3] );
+         //   println!("Down Iteration {}, generated the number {}, which is the diacritic {} ", i,random_int3, ZALGO_DOWN[random_int3] );
            // println!("mid Iteration {}", i);
-            println!("number generated: {}", random_int3);
+          //  println!("number generated: {}", random_int3);
             zalgo_string.push(ZALGO_DOWN[random_int3]);
         }
 
