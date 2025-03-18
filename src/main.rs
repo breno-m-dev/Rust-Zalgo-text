@@ -24,7 +24,12 @@ fn main() {
    // print!("{}",format!("A{}{}{}{}",ZALGO_UP[22],ZALGO_UP[20],ZALGO_UP[19],ZALGO_UP[0]));
     let complexity: u32 = read_complexity();
     println!("{}",zalgo_transform(complexity, read_string())); 
-
+    
+    //test lines
+  // let mut test   = String::new();
+    //test = String::from("ola tudo bemmm");
+   // println!("{}",zalgo_transform(complexity, test)); 
+   /// test lines end
 }
 ///* 
 
